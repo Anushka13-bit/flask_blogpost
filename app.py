@@ -1,8 +1,12 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
+from flask_cors import CORS
+  # allow React frontend to talk to Flask API
 
+app = Flask(__name__)
+CORS(app)
+cors=CORS(app,origins="*")
 # Database config
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
